@@ -15,5 +15,10 @@ namespace Mission6.Controllers
         {
             return View();
         }
+
+        public IActionResult EnterMovies()
+        {
+            return View();
+        }
     }
 }
