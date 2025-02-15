@@ -6,6 +6,12 @@ namespace Mission6.Controllers
 {
     public class HomeController : Controller
     {
+        private MovieDbContext _context;
+        public HomeController(MovieDbContext temp)
+        {
+            _context = temp;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -19,11 +25,13 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult EnterMovies()
         {
-            return View("EnterMovies");
+            return View();
         }
         [HttpPost]
         public IActionResult EnterMovies(Movie response)
         {
+            _context.Movies.Add(response);
+            _context.SaveChanges();
             return View("Confirmation", response);
         }
     }

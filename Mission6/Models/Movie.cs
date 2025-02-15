@@ -7,16 +7,16 @@ namespace Mission6.Models
         [Key]
         public int MovieID {  get; set; }
         [Required]
-        public string Title { get; set; } = string.Empty;
+        public required string Title { get; set; }
         [Required]
-        public string Category { get; set; } = string.Empty;
+        public required string Category { get; set; } 
         [Required]
         public int Year { get; set; }
         [Required]
-        public string Director { get; set; } = string.Empty;
+        public required string Director { get; set; } 
         [Required]
-        public string Rating { get; set; } = string.Empty;
-        [Required]
+        public required string Rating { get; set; } 
+        
         public bool? Edited { get; set; }
 
         public string? LentTo { get; set; }
