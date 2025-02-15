@@ -16,9 +16,15 @@ namespace Mission6.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult EnterMovies()
         {
-            return View();
+            return View("EnterMovies");
+        }
+        [HttpPost]
+        public IActionResult EnterMovies(Movie response)
+        {
+            return View("Confirmation", response);
         }
     }
 }
