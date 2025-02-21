@@ -34,5 +34,18 @@ namespace Mission6.Controllers
             _context.SaveChanges();
             return View("Confirmation", response);
         }
+
+        public IActionResult ViewMovies()
+        {
+            
+            var movies = _context.Movies
+                .OrderBy(x => x.Title)
+                .ToList();
+
+            return View(movies);
+        }
+
     }
+
+
 }
