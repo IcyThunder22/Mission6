@@ -50,19 +50,46 @@ namespace Mission6.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var record = _context.Movies
-                .Where(x => x.MovieID == id);
+                .Single(x => x.MovieID == id);
             
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
             
 
-            return View("EnterMovie");
+            return View("EnterMovies", record);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Movie updatedInfo)
+        {
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("ViewMovies");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieID == id);
+
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction("ViewMovies");
+        }
     }
 
 
