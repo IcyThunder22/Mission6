@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission6.Models;
 
 namespace Mission6.Controllers
@@ -25,6 +26,9 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult EnterMovies()
         {
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
             return View();
         }
         [HttpPost]
@@ -39,10 +43,24 @@ namespace Mission6.Controllers
         {
             
             var movies = _context.Movies
+                .Include(x => x.Category)
                 .OrderBy(x => x.Title)
                 .ToList();
 
             return View(movies);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var record = _context.Movies
+                .Where(x => x.MovieID == id);
+            
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            
+
+            return View("EnterMovie");
         }
 
     }

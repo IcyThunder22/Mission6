@@ -5,6 +5,7 @@ body {
     color: #FFD700; /* Gold text */
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
 /* ?? Header */
@@ -51,12 +52,28 @@ nav {
 
 /* ?? Page Content */
 .content-container {
-    max-width: 800px;
+    max-width: 90%;
     margin: 40px auto;
     background-color: #222; /* Dark gray */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(255, 215, 0, 0.3); /* Soft gold glow */
+    overflow: hidden; /* Prevents elements from overflowing */
+    word-wrap: break-word; /* Ensures text wraps */
+}
+
+/* ?? Responsive Containers */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* ?? Prevent Text Overflow */
+.responsive-text {
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 /* ?? Form Styling */
@@ -66,6 +83,8 @@ form {
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
 }
 
 label {
@@ -84,6 +103,11 @@ input, select {
     color: #FFD700;
 }
 
+    input:focus, select:focus {
+        border-color: #FFC107;
+        outline: none;
+    }
+
 /* ?? Footer */
 footer {
     text-align: center;
@@ -92,54 +116,55 @@ footer {
     color: #FFD700;
     margin-top: 30px;
 }
-/* ?? Form Container */
-.content-container {
-    max-width: 500px;
-    margin: 40px auto;
+
+/* ?? Table Styling */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling if necessary */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
     background-color: #222; /* Dark gray */
-    padding: 20px;
-    border-radius: 8px;
+    color: #FFD700; /* Gold text */
+    border: 2px solid #FFD700; /* Gold border */
+    margin-top: 20px;
     box-shadow: 2px 2px 10px rgba(255, 215, 0, 0.3); /* Soft gold glow */
 }
 
-/* ?? Form Styling */
-form {
-    background-color: #222;
+thead {
+    background-color: #8B0000; /* Deep red */
     color: #FFD700;
-    padding: 20px;
-    border-radius: 8px;
+    font-size: 18px;
 }
 
-/* ?? Inputs */
-input, select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #E6B800;
-    border-radius: 4px;
-    background-color: #333;
-    color: #FFD700;
+th, td {
+    border: 1px solid #E6B800; /* Gold border */
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word; /* Ensures text wraps inside table cells */
 }
 
-    input:focus, select:focus {
-        border-color: #FFC107;
-        outline: none;
+tbody tr:nth-child(even) {
+    background-color: #333; /* Slightly lighter gray for alternating rows */
+}
+
+tbody tr:hover {
+    background-color: #444; /* Darker gray hover */
+}
+
+/* ?? Responsive Adjustments */
+@media (max-width: 768px) {
+    .content-container {
+        max-width: 95%;
     }
 
-/* ?? Submit Button */
-.submit-button {
-    background-color: #FFC107;
-    color: #000000;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-    .submit-button:hover {
-        background-color: #FF4500;
-        color: white;
+    table {
+        font-size: 14px;
     }
+
+    th, td {
+        padding: 8px;
+    }
+}

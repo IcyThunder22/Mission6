@@ -12,13 +12,21 @@
 		</div>
 
 		<div>
-			<label asp-for="Category" class="form-label">Category</label>
-			<input asp-for="Category" class="form-control" required />
+			<label asp-for="CategoryID" class="form-label">Category</label>
+			<input asp-for="CategoryID" class="form-control" required />
+			
 		</div>
 
 		<div>
 			<label asp-for="Year" class="form-label">Year</label>
 			<input asp-for="Year" class="form-control" required />
+			<select asp-for="CategoryID">
+				<option value="">Select a Category</option>
+				@foreach (Category record in ViewBag.Categories)
+				{
+					<option value="@record.CategoryID">@record.CategoryName</option>
+				}
+			</select>
 		</div>
 
 		<div>

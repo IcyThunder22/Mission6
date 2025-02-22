@@ -8,5 +8,6 @@ namespace Mission6.Models // Ensure this namespace matches your project
         public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options) { }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

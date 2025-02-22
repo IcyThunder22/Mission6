@@ -19,23 +19,26 @@
             <th>CopiedToPlex</th>
             <th>Notes</th>
         </tr>
-        
+
     </thead>
         @foreach (var movie in Model)
-        {
+    {
         <tbody>
             <tr>
 				<td>@movie.Title</td>
-				<td>@movie.Categories</td>
-            <td>@movie.Year</td>
-            <td>@movie.Director</td>
-            <td>@movie.Rating</td>
-            <td>@movie.Edited</td>
-            <td>@movie.LentTo</td>
-            <td>CopiedToPlex Filler</td>
-            <td>@movie.Notes</td>
+				<td>@movie.Category.CategoryName</td>
+				<td>@movie.Year</td>
+				<td>@movie.Director</td>
+				<td>@movie.Rating</td>
+				<td>@movie.Edited</td>
+				<td>@movie.LentTo</td>
+				<td>@movie.CopiedToPlex</td>
+				<td>@movie.Notes</td>
+
+                <td><a class="submit-button">Edit</a></td>
+                <td><a class="submit-button">Delete</a></td>
             </tr>
-        
-    </tbody>
+             
+        </tbody>
     }
 </table>
