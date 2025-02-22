@@ -21,11 +21,12 @@
         </tr>
         
     </thead>
-    <tbody>
         @foreach (var movie in Model)
         {
-            @movie.Title
-            <td>@movie.Category</td>
+        <tbody>
+            <tr>
+				<td>@movie.Title</td>
+				<td>@movie.Categories</td>
             <td>@movie.Year</td>
             <td>@movie.Director</td>
             <td>@movie.Rating</td>
@@ -33,7 +34,8 @@
             <td>@movie.LentTo</td>
             <td>CopiedToPlex Filler</td>
             <td>@movie.Notes</td>
-        }
+            </tr>
         
     </tbody>
+    }
 </table>
